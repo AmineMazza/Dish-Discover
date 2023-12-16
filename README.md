@@ -39,7 +39,7 @@ Configurez votre base de données
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=koul-healthy
+DB_DATABASE=Dish-Discover
 DB_USERNAME=root
 DB_PASSWORD=
 ```
