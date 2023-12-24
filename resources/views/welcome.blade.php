@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1 style="text-align: center">Welcome To Dish Discover</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque quam cumque nesciunt architecto odio asperiores. Facere laboriosam cum quasi, suscipit neque sequi consequatur ipsum maxime earum cupiditate officiis odio exercitationem!</p>
     
 </body>
 </html>

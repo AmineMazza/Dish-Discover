@@ -21,7 +21,23 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'tel', 
+        'city', 
+        'role',
     ];
+
+
+    public function Restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+
+    public function Demandes()
+    {
+        return $this->hasMany(Demande::class);
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
