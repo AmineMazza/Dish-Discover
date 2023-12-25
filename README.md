@@ -49,6 +49,13 @@ Exécutez les migrations
 ```
 php artisan migrate
 ```
+Exécuter seeders dans la BD
+```
+php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=RestaurantSeeder
+php artisan db:seed --class=OffreSeeder
+php artisan db:seed --class=DemandesSeeder
+```
 
 Lancer le serveur
 
