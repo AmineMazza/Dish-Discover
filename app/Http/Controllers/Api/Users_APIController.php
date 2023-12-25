@@ -3,17 +3,24 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class TesAPIController extends Controller
+class Users_APIController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $users = User::all();
+        
+        return response()->json([
+            "users"=>$users,
+            "status"=>"200, Kulchi Nadi",
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.

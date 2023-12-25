@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('scrap_restos', function (Blueprint $table) {
-            $table->unsignedBigInteger('offre_id');
+        Schema::table('scrap__restos', function (Blueprint $table) {
+            $table->unsignedBigInteger('offre_id')->default(1); // La valeur par défaut "1"
             $table->foreign('offre_id')->references('id')->on('offres')->onDelete('cascade'); 
         });
     }

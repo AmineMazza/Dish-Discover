@@ -9,10 +9,13 @@ class Restaurant extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nameResto',
-        'addressResto'
-    ];
+        protected $fillable = [
+            'Name_Resto',
+            'Address_Resto', // Correction du nom de la colonne
+            'user_id',
+            'updated_at',
+            'created_at',
+        ];
 
     public function User()
     {

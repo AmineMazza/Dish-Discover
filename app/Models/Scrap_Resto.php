@@ -10,10 +10,12 @@ class Scrap_Resto extends Model
     use HasFactory;
     
     protected $fillable = [
-        'Name',
+        
+        'placeId',
         'address',
         'category',
         'googleUrl',
+        'storeName',
         'ratingText',
         'stars',
         'numberOfReviews',

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
-            $table->string('nameResto')->nullable();
-            $table->string('addressResto')->nullable();
+            $table->string('Name_Resto')->nullable();
+            $table->string('Adress_Resto')->nullable();
             $table->timestamps();
         });
     }

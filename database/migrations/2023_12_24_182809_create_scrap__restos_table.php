@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('scrap_restos', function (Blueprint $table) {
+        Schema::create('scrap__restos', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
+            $table->string('placeId');
             $table->string('address');
             $table->string('category');
             $table->string('googleUrl');
+            $table->string('storeName');
             $table->string('ratingText');
             $table->float('stars');
             $table->integer('numberOfReviews');
