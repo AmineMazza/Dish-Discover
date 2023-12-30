@@ -52,10 +52,31 @@ class ScrapCommande_APIController extends Controller
 /**
 * update
 */
-    public function update(string $id)
-    {
-        //
+   
+public function update(Request $request, $id){
+    try {
+
+        $scrapCommande = Scrap_Commande::find($id);
+
+        $scrapCommande->orderDate = $request->orderDate;
+        $scrapCommande->quantity = $request->quantity;
+        $scrapCommande->price = $request->price;
+        $scrapCommande->paymentMethod = $request->paymentMethod;
+        $scrapCommande->restaurantAddress = $request->restaurantAddress;
+        $scrapCommande->foodCategory = $request->foodCategory;
+
+        $scrapCommande->save();
+
+        return response()->json([
+            "status"=>"200, Scrap Commande Modifié avec succés",
+            "data"=>$scrapCommande,
+        ]);       
+    } 
+    catch (Exception $e) {
+        return response()->json($e) ;
     }
+  
+}
 
 
 /**

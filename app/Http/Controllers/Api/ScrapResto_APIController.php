@@ -44,7 +44,7 @@ class ScrapResto_APIController extends Controller
             }
     
             return response()->json([
-                "status"=>"200, Les Restos scrappé Ajouté avec succés",
+                "status"=>"200, Les Restaurants scrappé Ajouté avec succés",
                 "data"=>$dataArray,
             ]);       
         } 
@@ -74,7 +74,7 @@ class ScrapResto_APIController extends Controller
             $scrapResto->save();
     
             return response()->json([
-                "status"=>"200, Scrap Resto Modifié avec succés",
+                "status"=>"200, Scrap-Resto Modifié avec succés",
                 "data"=>$scrapResto,
             ]);       
         } 
@@ -94,7 +94,7 @@ class ScrapResto_APIController extends Controller
             $scrapResto->delete();
     
             return response()->json([
-                "status"=>"200, Scrap Resto Supprimé avec succés",
+                "status"=>"200, Scrap-Resto Supprimé avec succés",
                 "data"=>$scrapResto,
             ]);       
         } 
