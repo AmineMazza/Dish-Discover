@@ -10,11 +10,12 @@ class Scrap_Commande extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Name',
-        'nombre',
-        'prix',
-        'address',
-        'ville',
+        'orderDate',
+        'quantity',
+        'price',
+        'paymentMethod',
+        'restaurantAddress',
+        'foodCategory'
     ];
 
     public function Offre()

@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('scrap__restos', function (Blueprint $table) {
             $table->id();
-            $table->string('placeId');
-            $table->string('address');
-            $table->string('category');
-            $table->string('googleUrl');
-            $table->string('storeName');
-            $table->string('ratingText');
-            $table->float('stars');
-            $table->integer('numberOfReviews');
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->string('placeId')->nullable();
+            $table->string('address')->nullable();
+            $table->string('category')->nullable();
+            $table->string('googleUrl')->nullable();
+            $table->string('storeName')->nullable();
+            $table->string('ratingText')->nullable();
+            $table->float('stars')->nullable();
+            $table->integer('numberOfReviews')->nullable();
+            $table->float('latitude')->nullable();
+            $table->float('longitude')->nullable();
             $table->timestamps();
         });
     }

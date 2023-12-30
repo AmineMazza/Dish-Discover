@@ -3,31 +3,62 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateScrapResto;
 use App\Models\Scrap_Resto;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ScrapResto_APIController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+
+/**
+* Voir tout
+*/
     public function index()
     {
-        $scrapResto = Scrap_Resto::all();
-        
-        return response()->json([
-            "scrapResto"=>$scrapResto,
-            "status"=>"200, Kulchi Nadi",
-        ]);
+        try {
+            $scrapResto = Scrap_Resto::all();
+
+            return response()->json([
+                "scrapResto"=>$scrapResto,
+                "status"=>"200, Kulchi Nadi",
+            ]);      
+        } 
+        catch (Exception $e) {
+            return response()->json($e) ;
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+/**
+* create
+*/
     public function create(Request $request){
         try {
-            $scrapResto = new Scrap_Resto();
+
+            $dataArray = $request->data; 
+
+            foreach ($dataArray as $data) {
+                Scrap_Resto::create($data);
+            }
+    
+            return response()->json([
+                "status"=>"200, Les Restos scrappé Ajouté avec succés",
+                "data"=>$dataArray,
+            ]);       
+        } 
+        catch (Exception $e) {
+            return response()->json($e) ;
+        }
+      
+    }
+/**
+* update
+*/
+    public function update(UpdateScrapResto $request, $id){
+        try {
+            $scrapResto = Scrap_Resto::find($id);
 
             $scrapResto->placeId = $request->placeId;
             $scrapResto->address = $request->address;
@@ -39,11 +70,11 @@ class ScrapResto_APIController extends Controller
             $scrapResto->numberOfReviews = $request->numberOfReviews;
             $scrapResto->latitude = $request->latitude;
             $scrapResto->longitude = $request->longitude;
-
+    
             $scrapResto->save();
     
             return response()->json([
-                "status"=>"200, Produit Ajouté avec succés",
+                "status"=>"200, Scrap Resto Modifié avec succés",
                 "data"=>$scrapResto,
             ]);       
         } 
@@ -53,28 +84,22 @@ class ScrapResto_APIController extends Controller
       
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+/**
+* delete
+*/
+    public function delete($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        try {
+            $scrapResto = Scrap_Resto::find($id);
+            $scrapResto->delete();
+    
+            return response()->json([
+                "status"=>"200, Scrap Resto Supprimé avec succés",
+                "data"=>$scrapResto,
+            ]);       
+        } 
+        catch (Exception $e) {
+            return response()->json($e) ;
+        }
     }
 }

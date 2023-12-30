@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('scrap__commandes', function (Blueprint $table) {
-            $table->unsignedBigInteger('offre_id');
-            $table->foreign('offre_id')->references('id')->on('offres')->onDelete('cascade'); 
-        });
+        // Schema::table('scrap__commandes', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('offre_id');
+        //     $table->foreign('offre_id')->references('id')->on('offres')->onDelete('cascade'); 
+        // });
     }
 
     /**

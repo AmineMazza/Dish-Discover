@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('scrap__commandes', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-            $table->integer('nombre');
-            $table->float('prix');
-            $table->string('address');
-            $table->string('ville');
+            $table->string('orderDate');
+            $table->integer('quantity');
+            $table->float('price');
+            $table->string('paymentMethod');
+            $table->string('restaurantAddress');
+            $table->string('foodCategory');
            
             $table->timestamps();
         });
