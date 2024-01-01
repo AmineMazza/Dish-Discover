@@ -3,70 +3,70 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginUserRequest;
+use App\Http\Requests\RegisterUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class Users_APIController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+  
     public function index()
     {
         $users = User::all();
         
         return response()->json([
             "users"=>$users,
-            "status"=>"200, Kulchi Nadi",
+            "Statut Code" => "200",
+            "message"=>"Kulchi Nadi",
         ]);
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function register(RegisterUser $request)
     {
-        //
+        $user = new User();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->address = $request->address;
+        $user->tel = $request->tel;
+        $user->city = $request->city;
+        // $user->role=$request->role; 
+
+        $user->save();    
+        return response()->json([
+            "Statut Code" => "200",
+            "message" => "User registered successfully",
+            "user"=>$user,
+        ]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function login(LoginUserRequest $request)
     {
-        //
+        if (auth()->attempt($request->only(['email' , 'password']))) {
+         
+            //Pour récupérer l'utilisateur connecté :
+            $user = auth()->user();
+
+            //Pour Creer un Token JWT:
+            $token = $user->createToken('CLE_SECRET_JUST_POUR_BACK-END')->plainTextToken; //"createToken" elle est reconu Pas par laravel mais il marche bien
+            return response()->json([
+                'Statut Code' => '200',
+                'message' => 'Utilisateur Connecté',
+                "user"=>$user,
+                "token"=>$token,
+            ]);
+
+        }else{
+            return response()->json([
+                'Statut Code' => '403',
+                'message' => 'Information Non valide',
+            ]);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

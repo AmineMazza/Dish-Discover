@@ -17,6 +17,16 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+
+// "Register":
+    Route::post('/register',[Users_APIController::class,"register"]);
+// "Login":
+    Route::post('/login',[Users_APIController::class,"login"]);
+
+    
+Route::group(['middleware'=>['auth:sanctum']] ,function() {
+
 // Pour recuperer la liste des ScrapRestos :
     Route::get('/ScrapResto',[ScrapResto_APIController::class,"index"])->name("ScrapResto");
 // Pour Creer un ScrapResto :
@@ -36,11 +46,18 @@ use Illuminate\Support\Facades\Route;
 // Pour Modifier un ScrapResto :
     Route::delete('/ScrapCommande/{id}', [ScrapCommande_APIController::class,'delete']);
 
+    
+// Pour recuperer la liste des utilisateurs :
+    Route::get('/users',[Users_APIController::class,"index"])->name("users");
 
-// Pour recuperer la liste des produits :
-Route::get('/users',[Users_APIController::class,"index"])->name("users");
-
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Pour recuperer l'utilisateur actuellement connecté :
+    Route::get('/user', function (Request $request) {
+            return $request->user();
+        });
 });
+
+
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
