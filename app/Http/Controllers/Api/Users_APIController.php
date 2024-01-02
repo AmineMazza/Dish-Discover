@@ -53,7 +53,7 @@ class Users_APIController extends Controller
             $user = auth()->user();
 
             //Pour Creer un Token JWT:
-            $token = $user->createToken('CLE_SECRET_JUST_POUR_BACK-END')->plainTextToken; //"createToken" elle est reconu Pas par laravel mais il marche bien
+            $token = $user->createToken('CLE_SECRET_JUST_POUR_BACK-END')->plainTextToken; //"createToken" elle est Pas reconu par laravel mais il marche bien
             return response()->json([
                 'Statut Code' => '200',
                 'message' => 'Utilisateur Connecté',
