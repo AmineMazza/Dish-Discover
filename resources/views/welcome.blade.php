@@ -16,7 +16,7 @@
                               <span style="color: rgb(61, 61, 255);">Dish</span>
                               <span style="color: rgb(61, 61, 255);">Discover</span></h5>
                               <p class="mb-4">
-                              Pour gérer les demandes<span class="fw-medium"> des </span> gerants des restaurantes
+                              Pour gérer les Demandes<span class="fw-medium"> des </span> gerants des restaurantes
                               </p>
                           </div>
                           </div>
