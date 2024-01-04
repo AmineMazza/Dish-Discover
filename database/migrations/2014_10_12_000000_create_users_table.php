@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('tel')->nullable();
             $table->string('city')->nullable();
             $table->string('role')->default('user');
+            $table->string('statut')->default('en attente');
             $table->string('email')->unique();
             $table->string('password');
 

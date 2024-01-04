@@ -34,6 +34,7 @@ class Users_APIController extends Controller
         $user->address = $request->address;
         $user->tel = $request->tel;
         $user->city = $request->city;
+        // $user->statut = $request->statut;
         // $user->role=$request->role; 
 
         $user->save();    
