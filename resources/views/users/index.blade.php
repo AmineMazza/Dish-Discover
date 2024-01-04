@@ -17,7 +17,7 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          {{-- <th>Id</th> --}}
+                          <th>Id</th>
                           <th>Nom</th>
                           <th>ville</th>
                           <th>Tel</th>
@@ -30,20 +30,30 @@
                       <tbody class="table-border-bottom-0">
                         @foreach ($users as $user)
                                 <tr>
-                                {{-- <td>{{$user->id}}</td> --}}
+                                <td>{{$user->id}}</td>
                                 <td>{{Str::limit($user->name)}}</td>
                                 <td> {{$user->city}}</td>
                                 <td> {{$user->tel}}</td>
                                 <td> {{$user->email}}</td>
+                                
+                              @if ($user->role === "gerant")
+                                <td><span class="badge bg-label-success me-1"> {{$user->role}}</span></td>
+                              @else
                                 <td><span class="badge bg-label-primary me-1"> {{$user->role}}</span></td>
+                              @endif
+
+                              @if ($user->statut === "confirmé")
+                              <td><span class="badge bg-label-success me-1">{{$user->statut}}</span></td>
+                              @else
                                 <td><span class="badge bg-label-primary me-1">{{$user->statut}}</span></td>
-                                <td>
+                              @endif
+                                  <td>
                                     <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu" style="">
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item" href="{{ route('user.edit', $user->id) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                         <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                                     </div>
                                     </div>

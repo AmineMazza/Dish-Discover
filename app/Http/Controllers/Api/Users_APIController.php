@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUser;
+use App\Http\Requests\UpdateUser;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -68,6 +70,26 @@ class Users_APIController extends Controller
                 'message' => 'Information Non valide',
             ]);
         }
+    }
+
+    public function update(UpdateUser $request, $id){
+        try {
+            $user = User::find($id);
+
+            $user->role = $request->role;
+            $user->statut = $request->statut;
+
+            $user->save();
+    
+            return response()->json([
+                "status"=>"200, User Modifié avec succés",
+                "data"=>$user,
+            ]);       
+        } 
+        catch (Exception $e) {
+            return response()->json($e) ;
+        }
+      
     }
 
 }

@@ -33,7 +33,7 @@ Route::group(['middleware'=>['auth:sanctum']] ,function() {
     Route::post('/ScrapResto/create', [ScrapResto_APIController::class,'create']);
 // Pour Modifier un ScrapResto :
     Route::put('/ScrapResto/edit/{id}', [ScrapResto_APIController::class,'update']);
-// Pour Modifier un ScrapResto :
+// Pour Supprimer un ScrapResto :
     Route::delete('/ScrapResto/{id}', [ScrapResto_APIController::class,'delete']);
 
 
@@ -43,12 +43,14 @@ Route::group(['middleware'=>['auth:sanctum']] ,function() {
     Route::post('/ScrapCommande/create', [ScrapCommande_APIController::class,'create']);
 // Pour Modifier un ScrapResto :
     Route::put('/ScrapCommande/edit/{id}', [ScrapCommande_APIController::class,'update']);
-// Pour Modifier un ScrapResto :
+// Pour supprimer un ScrapResto :
     Route::delete('/ScrapCommande/{id}', [ScrapCommande_APIController::class,'delete']);
 
     
 // Pour recuperer la liste des utilisateurs :
     Route::get('/users',[Users_APIController::class,"index"])->name("users");
+// Pour Modifier un user :
+    Route::put('/user/edit/{id}', [Users_APIController::class,'update']);
 
 // Pour recuperer l'utilisateur actuellement connecté :
     Route::get('/user', function (Request $request) {
