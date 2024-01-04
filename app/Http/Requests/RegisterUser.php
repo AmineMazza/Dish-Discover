@@ -52,7 +52,7 @@ class RegisterUser extends FormRequest
         return [
             'name.required' => 'Le nom doit etre fourni',
             'email.required' => 'Une adresse mail doit etre fourni',
-            'email.unique' => 'Cette adresse mail existe déja',
+            'email.unique' => 'Cette adresse est déjà éxistante',
             'password.required' => 'Le mot de passe est requis',
             'address.required' => 'Votre adresse doit etre fourni',
             'tel.required' => 'Numero de Telephone doit etre fourni',
