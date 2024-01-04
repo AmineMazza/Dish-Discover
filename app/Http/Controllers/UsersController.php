@@ -16,7 +16,7 @@ class UsersController extends Controller
         $users = User::paginate(10);
 
         
-        return view('users', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -32,7 +32,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -43,20 +43,31 @@ class UsersController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function edit(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        return view('users.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'address' =>'required',
+            'tel' => 'required',
+            'city' => 'required',
+            'role' => 'required',
+            'statut' => 'required',
+            'email' => 'required',
+
+        ]);
+        $user = User::find($id);
+        $user->update($request->all());
+
+        return redirect()->route('users.index')->with('success', 'User modifié avec succès');
     }
 
     /**
