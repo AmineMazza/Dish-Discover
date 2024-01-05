@@ -38,15 +38,20 @@
                                 
                               @if ($user->role === "gerant")
                                 <td><span class="badge bg-label-success me-1"> {{$user->role}}</span></td>
-                              @else
+                              @elseif ($user->role === "user")
                                 <td><span class="badge bg-label-primary me-1"> {{$user->role}}</span></td>
+                              @elseif ($user->role === "user inactive")
+                                <td><span class="badge bg-label-danger me-1"> {{$user->role}}</span></td>
                               @endif
 
                               @if ($user->statut === "confirmé")
                               <td><span class="badge bg-label-success me-1">{{$user->statut}}</span></td>
-                              @else
+                              @elseif ($user->statut === "en attente")
                                 <td><span class="badge bg-label-primary me-1">{{$user->statut}}</span></td>
+                              @elseif ($user->statut === "Annulé")
+                                <td><span class="badge bg-label-danger me-1">{{$user->statut}}</span></td>
                               @endif
+
                                   <td>
                                     <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" aria-expanded="false">
