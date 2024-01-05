@@ -43,6 +43,7 @@
             <select name="role" required  class="form-select" id="role" aria-label="Default select example">
                     <option value="{{ $user->role}}">{{ $user->role }}</option>
                     <option value="user">user</option>
+                    <option value="user inactive">user inactive</option>
             </select>
         </div>
         @endif
@@ -52,6 +53,17 @@
             <select name="role" required  class="form-select" id="role" aria-label="Default select example">
                     <option value="{{ $user->role }}">{{ $user->role }}</option>
                     <option value="gerant">gerant</option>
+                    <option value="user inactive">user inactive</option>
+            </select>
+        </div>
+        @endif
+        @if ($user->role === "user inactive")
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select name="role" required  class="form-select" id="role" aria-label="Default select example">
+                    <option value="{{ $user->role }}">{{ $user->role }}</option>
+                    <option value="gerant">gerant</option>
+                    <option value="user">user</option>
             </select>
         </div>
         @endif
@@ -63,6 +75,7 @@
             <select name="statut" required  class="form-select" id="statut" aria-label="Default select example">
                     <option value="{{ $user->statut }}">{{ $user->statut }}</option>
                     <option value="en attente">en attente</option>
+                    <option value="Annulé">Annulé</option>
             </select>
         </div>
         @endif
@@ -72,6 +85,17 @@
             <select name="statut" required  class="form-select" id="statut" aria-label="Default select example">
                     <option value="{{ $user->statut }}">{{ $user->statut }}</option>
                     <option value="confirmé">confirmé</option>
+                    <option value="Annulé">Annulé</option>
+            </select>
+        </div>
+        @endif
+        @if ($user->statut === "Annulé")
+        <div class="mb-3">
+            <label for="statut" class="form-label">statut</label>
+            <select name="statut" required  class="form-select" id="statut" aria-label="Default select example">
+                    <option value="{{ $user->statut }}">{{ $user->statut }}</option>
+                    <option value="confirmé">confirmé</option>
+                    <option value="en attente">en attente</option>
             </select>
         </div>
         @endif
