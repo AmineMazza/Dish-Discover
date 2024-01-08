@@ -12,9 +12,7 @@ class OffreController extends Controller
      */
     public function index()
     {
-        $offres = Offre::all();
-
-        
+        $offres = Offre::all();     
         return view('offre', compact('offres'));
     }
 
@@ -23,7 +21,7 @@ class OffreController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
