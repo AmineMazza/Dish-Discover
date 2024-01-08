@@ -27,19 +27,40 @@ class ApiOffreController extends Controller
      */
     public function create(Request $request)
     {
+
+
+
+
         try {
-            Offre::create($request->all());
-    
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Bien ajouté',
-            ], 201);
-        } catch (\Exception $e) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Erreur echec d enregistrement',
-                'error' => $e->getMessage(),
-            ], 500);
+
+ $request->validate([
+        'title' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'description' => 'required',
+        'prix' => 'required|numeric',
+    ]);
+
+    // Handle file upload
+    $imagePath = $request->file('image')->store('images', 'public');
+
+    // Save form data to database
+    Offre::create([
+        'title' => $request->input('title'),
+        'image' => $imagePath,
+        'description' => $request->input('description'),
+        'prix' => $request->input('prix'),
+    ]);
+
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Bien ajouté',
+    ], 201);
+} catch (\Exception $e) {
+    return response()->json([
+        'status' => 'error',
+        'message' => 'Erreur échec d\'enregistrement',
+        'error' => $e->getMessage(),
+    ], 500);
         }
     
     }
