@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiOffreController;
 use App\Http\Controllers\Api\ScrapCommande_APIController;
 use App\Http\Controllers\Api\ScrapResto_APIController;
 use App\Http\Controllers\Api\Users_APIController;
@@ -57,6 +58,31 @@ Route::group(['middleware'=>['auth:sanctum']] ,function() {
             return $request->user();
         });
 });
+
+//pour recuperer la liste des offres :
+Route::get('/offre',[ApiOffreController::class,"index"]);
+
+//Pour créer un offre :
+Route::post('/offre/create', [ApiOffreController::class,'create']);
+
+
+//Pour afficher un seul offre :
+Route::get('/offre/{id}', [ApiOffreController::class,'show']);
+
+//Pour modifier un offre :
+Route::put('/offre/{id}', [ApiOffreController::class,'update']);
+
+
+//Pour Supprimer un offre :
+Route::delete('/offre/{id}', [ApiOffreController::class,'destroy']);
+
+
+
+
+
+
+
+
 
 
 

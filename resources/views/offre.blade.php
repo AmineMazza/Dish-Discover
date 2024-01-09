@@ -46,7 +46,7 @@
                                         <td>
                                           {{-- {{$offre->image}} --}}
                                           {{-- <img src="{{ asset('img/offres/' . $offre->image) }}" alt="{{ $offre->title }}" style="max-width: 100px; max-height: 100px;"> --}}
-                                          <img src="{{ asset($offre->image) }}" alt="image" style="width: 180px; height: 130px; border-radius: 5%;">
+                                          <img src="{{ asset('storage/' . $offre->image) }}" alt="image" style="width: 180px; height: 130px; border-radius: 5%;">
                                         </td>
                                         <td>{{Str::limit($offre->title,20)}}</td>
                                         <td>{{Str::limit($offre->description,50)}}</td>
