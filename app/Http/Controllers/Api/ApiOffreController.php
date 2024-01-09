@@ -15,12 +15,19 @@ class ApiOffreController extends Controller
      */
     public function index()
     {
-        $offre = Offre::all();
+        
+        try {
+            $offre = Offre::all();
 
-        return response()->json([
-            "offre"=>$offre,
-            "status"=>"200, Kulchi Nadi",
-        ]);
+            return response()->json([
+                "offres"=>$offre,
+                "status"=>"200, Kulchi Nadi",
+            ]);       
+        } 
+        catch (Exception $e) {
+            return response()->json($e) ;
+        }
+      
     }
 
     public function create(CreateOffreRequest $request){

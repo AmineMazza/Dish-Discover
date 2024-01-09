@@ -48,6 +48,18 @@ Route::group(['middleware'=>['auth:sanctum']] ,function() {
     Route::delete('/ScrapCommande/{id}', [ScrapCommande_APIController::class,'delete']);
 
     
+//pour recuperer la liste des offres :
+    Route::get('/offres',[ApiOffreController::class,"index"]);
+//Pour créer un offre :
+    Route::post('/offre/create', [ApiOffreController::class,'create']);
+//Pour afficher un seul offre :
+    Route::get('/offre/{id}', [ApiOffreController::class,'show']);
+//Pour modifier un offre :
+    Route::put('/offre/{id}', [ApiOffreController::class,'update']);
+//Pour Supprimer un offre :
+    Route::delete('/offre/{id}', [ApiOffreController::class,'destroy']);
+
+    
 // Pour recuperer la liste des utilisateurs :
     Route::get('/users',[Users_APIController::class,"index"])->name("users");
 // Pour Modifier un user :
@@ -58,23 +70,6 @@ Route::group(['middleware'=>['auth:sanctum']] ,function() {
             return $request->user();
         });
 });
-
-//pour recuperer la liste des offres :
-Route::get('/offres',[ApiOffreController::class,"index"]);
-
-//Pour créer un offre :
-Route::post('/offre/create', [ApiOffreController::class,'create']);
-
-
-//Pour afficher un seul offre :
-Route::get('/offre/{id}', [ApiOffreController::class,'show']);
-
-//Pour modifier un offre :
-Route::put('/offre/{id}', [ApiOffreController::class,'update']);
-
-
-//Pour Supprimer un offre :
-Route::delete('/offre/{id}', [ApiOffreController::class,'destroy']);
 
 
 
