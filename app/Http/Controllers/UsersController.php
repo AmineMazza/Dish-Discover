@@ -67,14 +67,15 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->update($request->all());
 
-        return redirect()->route('users.index')->with('success', 'User modifié avec succès');
+        return redirect()->route('users.index')->with('success', 'Utilisateur modifié avec succès');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('error', 'Utilisateur supprimé avec succès');
     }
 }
