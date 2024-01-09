@@ -27,8 +27,17 @@ Route::get('/statistiques',[StatistiqueController::class,'index'])->name('statis
 Route::get('/users', [UsersController::class,'index'])->name('users.index');
 Route::get('/user/{id}/edit', [UsersController::class,'edit'])->name('user.edit');
 Route::put('/user/{id}', [UsersController::class, 'update'])->name('user.update');
+Route::get("/user/{id}/delete", [UsersController::class,'destroy'])->name('user.delete');
+
 
 Route::get('/offres', [OffreController::class,'index'])->name('offres.index');
+Route::get('/offre/create', [OffreController::class,'create'])->name('offre.create');
+Route::post('/offre/store', [OffreController::class,'store'])->name('offre.store');
+Route::get('/offre/{id}/edit', [offreController::class,'edit'])->name('offre.edit');
+Route::put('/offre/{id}', [offreController::class, 'update'])->name('offre.update');
+Route::get("/offre/{id}/delete", [OffreController::class,'destroy'])->name('offre.delete');
+
+
 Route::get('/ScrapCommandes', [ScrapCommandeController::class,'index'])->name('ScrapCommandes.index');
 Route::get('/ScrapResto', [ScrapRestoController::class,'index'])->name('ScrapResto.index');
 

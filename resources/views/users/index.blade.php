@@ -11,6 +11,18 @@
                 <h4 class="py-3 mb-4"><span class="text-muted fw-light">utilisateurs / </span>Tous les utilisateurs - gérants restaurants</h4>
   
                 <!-- Basic Bootstrap Table -->
+                
+                @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+               @endif
+          
+              @if(session('success'))
+                  <div class="alert alert-success">
+                      {{ session('success') }}
+                  </div>
+              @endif
                 <div class="card">
                   <h5 class="card-header">utilisateurs</h5>
                   <div class="table-responsive text-nowrap">
@@ -59,7 +71,7 @@
                                     </button>
                                     <div class="dropdown-menu" style="">
                                         <a class="dropdown-item" href="{{ route('user.edit', $user->id) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                        <a class="dropdown-item" href="{{ route('user.delete', $user->id) }}"><i class="bx bx-trash me-1"></i> Delete</a>
                                     </div>
                                     </div>
                                 </td>

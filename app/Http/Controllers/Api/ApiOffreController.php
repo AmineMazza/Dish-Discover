@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateOffreRequest;
 use App\Models\Offre;
 use Exception;
 use Illuminate\Http\Request;
@@ -22,48 +23,70 @@ class ApiOffreController extends Controller
         ]);
     }
 
+    public function create(CreateOffreRequest $request){
+        try {
+            $Offre = new Offre();
+
+            $Offre->title = $request->title;
+            $Offre->image = $request->image;
+            $Offre->description = $request->description;
+            $Offre->prix = $request->prix;
+
+            $Offre->save();
+    
+            return response()->json([
+                "status"=>"200, Offre Ajouté avec succés.",
+                "data"=>$Offre,
+            ]);       
+        } 
+        catch (Exception $e) {
+            return response()->json($e) ;
+        }
+      
+    }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
-    {
+//     public function create(Request $request)
+//     {
 
 
 
 
-        try {
+//         try {
 
- $request->validate([
-        'title' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'description' => 'required',
-        'prix' => 'required|numeric',
-    ]);
+//  $request->validate([
+//         'title' => 'required',
+//         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+//         'description' => 'required',
+//         'prix' => 'required|numeric',
+//     ]);
 
-    // Handle file upload
-    $imagePath = $request->file('image')->store('images', 'public');
+//     // Handle file upload
+//     $imagePath = $request->file('image')->store('images', 'public');
 
-    // Save form data to database
-    Offre::create([
-        'title' => $request->input('title'),
-        'image' => $imagePath,
-        'description' => $request->input('description'),
-        'prix' => $request->input('prix'),
-    ]);
+//     // Save form data to database
+//     Offre::create([
+//         'title' => $request->input('title'),
+//         'image' => $imagePath,
+//         'description' => $request->input('description'),
+//         'prix' => $request->input('prix'),
+//     ]);
 
-    return response()->json([
-        'status' => 'success',
-        'message' => 'Bien ajouté',
-    ], 201);
-} catch (\Exception $e) {
-    return response()->json([
-        'status' => 'error',
-        'message' => 'Erreur échec d\'enregistrement',
-        'error' => $e->getMessage(),
-    ], 500);
-        }
+//     return response()->json([
+//         'status' => 'success',
+//         'message' => 'Bien ajouté',
+//     ], 201);
+// } catch (\Exception $e) {
+//     return response()->json([
+//         'status' => 'error',
+//         'message' => 'Erreur échec d\'enregistrement',
+//         'error' => $e->getMessage(),
+//     ], 500);
+//         }
     
-    }
+//     }
 
     /**
      * Store a newly created resource in storage.

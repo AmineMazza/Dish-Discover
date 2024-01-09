@@ -259,8 +259,8 @@ button.list-group-item-primary.active {
 }
 .btn-primary:hover {
     color: #fff !important;
-    background-color: #169921d0 !important;
-    border-color: #169921d0 !important;
+    background-color: #5c5cff !important;
+    border-color: #5c5cff !important;
     transform: translateY(-1px) !important;
 }
 .btn-check:focus + .btn-primary,

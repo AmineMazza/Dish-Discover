@@ -92,4 +92,20 @@ class Users_APIController extends Controller
       
     }
 
+    public function delete($id)
+{
+    try {
+        $user = User::find($id);
+        $user->delete();
+
+        return response()->json([
+            "status"=>"200, Utilisateur Supprimé avec succés",
+            "data"=>$user,
+        ]);       
+    } 
+    catch (Exception $e) {
+        return response()->json($e) ;
+    }
+}
+
 }

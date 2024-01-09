@@ -60,7 +60,7 @@ Route::group(['middleware'=>['auth:sanctum']] ,function() {
 });
 
 //pour recuperer la liste des offres :
-Route::get('/offre',[ApiOffreController::class,"index"]);
+Route::get('/offres',[ApiOffreController::class,"index"]);
 
 //Pour créer un offre :
 Route::post('/offre/create', [ApiOffreController::class,'create']);
