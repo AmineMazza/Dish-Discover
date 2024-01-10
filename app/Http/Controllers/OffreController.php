@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class OffreController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // Get Offres :
     public function index()
     {
         $offres = Offre::all();
@@ -20,15 +18,14 @@ class OffreController extends Controller
         return view('offres.index', compact('offres'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+       // Redirect to Create Offre :
     public function create()
     {
         return view('offres.create');
 
     }
 
+    // Create Offre :
     public function store(Request $request)
     {
         try {
@@ -64,26 +61,16 @@ class OffreController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
+    // Redirect to Edit Offre :
     public function edit(Request $request, $id)
     {
         $offre = Offre::find($id);
 
         return view('offres.edit', compact('offre'));
-
-
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
+    // Edit Offre :
     public function update(Request $request,$id)
     {
         $request->validate([
@@ -100,7 +87,8 @@ class OffreController extends Controller
     }
 
 
-
+    
+    // Delete Offre :
     public function destroy($id)
     {
         $offre = Offre::find($id);
