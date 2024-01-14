@@ -8,10 +8,16 @@ Clone repo
 git clone https://github.com/AmineMazza/Dish-Discover.git
 ```
 
-composer install / update 
+composer install  
 
 ```
 composer install
+```
+
+composer update 
+
+```
+composer update
 ```
 
 Générez une nouvelle clé de cryptage
