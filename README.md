@@ -8,7 +8,7 @@ Clone repo
 git clone https://github.com/AmineMazza/Dish-Discover.git
 ```
 
-composer update / install
+composer install / update 
 
 ```
 composer install
