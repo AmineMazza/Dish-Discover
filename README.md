@@ -3,7 +3,7 @@
 ## Front-End : 
 En production : https://dishdiscover.vercel.app/
 
-## Install
+## Back-End :
 
 Clone repo
 
